@@ -1,0 +1,92 @@
+body[theme="dark"] {
+  --mineCellBg: #328eff;
+  --mineCellHoverBg: #76b4ff;
+  --mineCellBorder1: #b5d7ff;
+  --mineCellBorder2: #052bff;
+  --mineCellIsOpenedBg: #001171;
+  --mineCellIsMineClicked: red;
+  --mineIconFill: black;
+  --flagIconFill: red;
+  --flagIconStroke: black;
+}
+
+body[theme="light"] {
+  --mineCellBg: #c1c1c1;
+  --mineCellHoverBg: #e1e1e1;
+  --mineCellBorder1: #ffffff;
+  --mineCellBorder2: #818181;
+  --mineCellIsOpenedBg: #666666;
+  --mineCellIsMineClicked: red;
+  --mineIconFill: black;
+  --flagIconFill: red;
+  --flagIconStroke: black;
+}
+
+.mineCell {
+  position: relative;
+  background-color: var(--mineCellBg);
+  border: 2px solid;
+  border-top-color: var(--mineCellBorder1);
+  border-right-color: var(--mineCellBorder2);
+  border-bottom-color: var(--mineCellBorder2);
+  border-left-color: var(--mineCellBorder1);
+  transition: background-color 0.1s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+}
+
+.mineCell:not(.isOpenedCell):hover {
+  cursor: pointer;
+  background-color: var(--mineCellHoverBg);
+}
+
+.mineCell.isOpenedCell {
+  border-color: var(--mineCellIsOpenedBg);
+  border-width: 1px;
+}
+
+.mineCell.isOpenedCell.isMineClicked {
+  background-color: var(--mineCellIsMineClicked);
+}
+
+.mineCell.isOpenedCell.isFalseFlag::after {
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  transform: rotate(-45deg);
+  top: 50%;
+  background-color: red;
+}
+
+.mineCell.isOpenedCell.isFalseFlag::before {
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  transform: rotate(45deg);
+  top: 50%;
+  background-color: red;
+}
+
+.mineIcon {
+  fill: var(--mineIconFill);
+  height: 12px;
+}
+
+.flagIcon {
+  fill: var(--flagIconFill);
+  stroke: var(--flagIconStroke);
+  stroke-width: 2px;
+}
+
+@media (max-width: 1100px) {
+  .mineCell {
+    width: 17px;
+    height: 17px;
+    font-size: 14px;
+  }
+}

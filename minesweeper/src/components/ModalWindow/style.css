@@ -1,0 +1,51 @@
+body[theme="dark"] {
+  --modalBg: rgb(0 0 0 / 70%);
+  --modalContentBg: rgb(47 63 187);
+  --modalContentBorderColor: #1610cb;
+  --modalContentColor: #fdffe3;
+}
+
+body[theme="light"] {
+  --modalBg: rgb(0 0 0 / 50%);
+  --modalContentBg: rgb(159 198 255);
+  --modalContentBorderColor: #0039ff;
+  --modalContentColor: black;
+}
+
+.modal {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999;
+  background: var(--modalBg);
+  backdrop-filter: blur(2px);
+}
+
+.modal.open {
+  display: flex;
+  animation: fadeIn 0.3s ease;
+}
+
+.modalContent {
+  background: var(--modalContentBg);
+  border: 5px outset var(--modalContentBorderColor);
+  border-radius: 10px;
+  box-shadow: 0 0 10px -5px black;
+  animation: fadeIn 0.3s ease, zoomIn 0.3s ease;
+  color: var(--modalContentColor);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.5); }
+  to { transform: scale(1); }
+}

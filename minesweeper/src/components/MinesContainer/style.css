@@ -1,0 +1,35 @@
+body[theme="dark"] {
+  --minesContainerScrollbarColorBg: rgb(0 0 255);
+}
+
+body[theme="light"] {
+  --minesContainerScrollbarColorBg: #00e3ff;
+}
+
+.minesContainer {
+  display: grid;
+  width: max-content;
+  user-select: none;
+  font-weight: bold;
+  background: var(--mainContainersBg);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px 0px var(--mainContainersShadow);
+  max-width: 99%;
+  overflow: auto;
+}
+
+.minesContainer::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+.minesContainer::-webkit-scrollbar-thumb {
+  background: var(--minesContainerScrollbarColorBg);
+  border-radius: 5px;
+}
+
+@media (max-width: 1100px) {
+  .minesContainer {
+    padding: 10px;
+  }
+}
